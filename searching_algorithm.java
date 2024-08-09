@@ -27,11 +27,14 @@ public class searching_algorithm {
        }
        System.out.print("Enter element you want to search  : ");
        int target = sc.nextInt();
-       if(liniear_search(arr, target)==-1){
+      
+       int ans = liniear_search(arr, target); 
+      
+       if(ans==-1){
         System.out.println("NOT FOUND!");
        }
        else{
-       System.out.println("Your element is on index " + liniear_search(arr, target));
+       System.out.println("Your element is on index " + ans);
        }
     }
 }
