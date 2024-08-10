@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class searching_algorithm {
+public class searching_algorithm_1 {
     
     public static int liniear_search(int arr[],int key)
     {
