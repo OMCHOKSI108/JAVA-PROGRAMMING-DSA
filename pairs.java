@@ -7,6 +7,9 @@
 (3,4) (3,5) 
 (4,5) 
  
+
+and print total number of pair tp
+Total pairs  = (n*(n-1)) / 2; 
  */
 
 
