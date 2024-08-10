@@ -1,4 +1,4 @@
-import java.util.Scanner;  // Import this to use Arrays.sort()
+import java.util.Scanner;   
 
 public class binary_search {
     public static int binary_search1(int num[], int key) {
