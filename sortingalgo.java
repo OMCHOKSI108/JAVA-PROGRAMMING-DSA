@@ -1,3 +1,11 @@
+//File is made by Om Choksi 23aiml010
+//code is for sorting algorithm 
+//BubbleSort
+//SelectionSort
+//insertion Sort 
+//MergeSort
+//Couting Sort
+
 class sortingalgo{
 
     public static void BubbleSort(int arr[]){
@@ -13,6 +21,11 @@ class sortingalgo{
             }
 
          }
+    }
+
+    public static void SelectionSort(int arr[]){
+
+
     }
 
     public static void PrintArray(int arr[]){
