@@ -1,5 +1,6 @@
 // Java code for thread creation by extending
 // the Thread class
+//Thread class 
 class MultithreadingDemo extends Thread {
 	public void run()
 	{
