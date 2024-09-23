@@ -15,7 +15,7 @@ class MultithreadingDemo extends Thread {
 	}
 }
  
-public class Multithread {
+public class MultiThread {
 	public static void main(String[] args)
 	{
 		int n = 8;
