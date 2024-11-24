@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Main5",
+      "request": "launch",
+      "mainClass": "Main5",
+      "projectName": "JAVA-PROGRAMMING-DSA_5ced9d4a"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
