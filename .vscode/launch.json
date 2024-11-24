@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "File_code",
+      "request": "launch",
+      "mainClass": "File_code",
+      "projectName": "JAVA-PROGRAMMING-DSA_5ced9d4a"
+    },
+    {
+      "type": "java",
       "name": "Main5",
       "request": "launch",
       "mainClass": "Main5",
