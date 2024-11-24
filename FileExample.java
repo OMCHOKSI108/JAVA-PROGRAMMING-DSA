@@ -2,7 +2,7 @@ import java.io.*;
 
 public class FileExample {
     public static void main(String[] args) {
-        String fileName = "example.txt";
+        String fileName = "Sanskruti_030.txt";
         String content = "Hello, this is a file handling example in Java.";
         
         // Write to the file
