@@ -40,6 +40,8 @@ public class Threading05 extends Thread {
      System.out.println("Priority Of child Thread :" + ct.getPriority());
 
      ct.start();
+     ChilThread ct1 = new ChilThread();
+     ct1.start();
      
 
 
