@@ -1,0 +1,27 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron: "0 12 * * *" # Runs daily at 12:00 UTC
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Git
+      run: |
+        git config --global user.name "OMCHOKSI108"
+        git config --global user.email "omchoksi108@gmail.com"
+
+    - name: Make 20 Commits
+      run: |
+        for i in {1..20}; do
+          echo "Commit number $i on $(date)" >> auto_commit_log.txt
+          git add auto_commit_log.txt
+          git commit -m "Auto commit $i on $(date)"
+        done
+        git push
