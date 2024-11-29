@@ -6,7 +6,9 @@ on:
       - master
 
   schedule:
-    - cron: "0 7,9,11 * * 1,3"  # Scheduled trigger
+ 
+  - cron: "0 11,12 * * *"  # Runs daily at 11 AM and 12 PM UTC
+
   
   workflow_dispatch:  # Manual trigger
 
