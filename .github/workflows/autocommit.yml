@@ -21,7 +21,7 @@ jobs:
             git remote add origin https://github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
           fi
           git fetch origin
-          git checkout master
+          git checkout main
 
       - name: Modify Last Update
         run: |
