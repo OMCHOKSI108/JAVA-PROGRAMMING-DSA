@@ -14,10 +14,12 @@ jobs:
   auto_commit:
     runs-on: ubuntu-latest
     steps:
-      - name: Set Up Repository (Clone Repo)
+      - name: Check if Repo is Initialized
         run: |
-          git init
-          git remote add origin https://github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
+          if [ ! -d ".git" ]; then
+            git init
+            git remote add origin https://github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
+          fi
           git fetch origin
           git checkout master
 
