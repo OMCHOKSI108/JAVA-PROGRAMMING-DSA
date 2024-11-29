@@ -14,20 +14,19 @@ jobs:
   auto_commit:
     runs-on: ubuntu-latest
     steps:
-      - name: DEBUG 
-        run: echo "::debug::Ref = ${{github.ref}}"
-
-      - uses: actions/checkout@v3      
-        with:
-         persist-credentials: false
-         fetch-depth: 0
-
-      - name: Modify last update
+      - name: Set Up Repository (Clone Repo)
         run: |
-          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
+          git init
+          git remote add origin https://github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
+          git fetch origin
+          git checkout master
+
+      - name: Modify Last Update
+        run: |
+          d=$(date '+%Y-%m-%dT%H:%M:%SZ')
           echo $d > LAST_UPDATED
-          
-      - name: Commit changes
+
+      - name: Commit Changes
         run: |
           git config --local user.email "omchoksi108@gmail.com"
           git config --local user.name "OMCHOKSI108"
@@ -47,9 +46,8 @@ jobs:
           rand=$[$RANDOM % ${#arr[@]}]
           
           git commit -m "${arr[$rand]}"
-          
-      - name: GitHub Push
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          directory: "."
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push Changes
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
+          git push origin master
