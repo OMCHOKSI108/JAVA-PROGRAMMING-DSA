@@ -52,4 +52,4 @@ jobs:
       - name: Push Changes
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
-          git push origin master
+          git push origin main
