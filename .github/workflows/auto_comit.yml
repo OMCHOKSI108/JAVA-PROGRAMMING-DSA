@@ -24,4 +24,10 @@ jobs:
           git add auto_commit_log.txt
           git commit -m "Auto commit $i on $(date)"
         done
+
+    - name: Push Changes
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
         git push
