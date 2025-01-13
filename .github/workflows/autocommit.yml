@@ -15,14 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up job
+        run: echo "Starting Auto Commit workflow"
+
       - name: Check if Repo is Initialized
         run: |
+          # Clone the repository if the directory is empty
           if [ ! -d ".git" ]; then
-            git init
-            git remote add origin https://github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
+            echo "Repository not initialized. Cloning..."
+            git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git .
+            git checkout main  # Ensure you're on the correct branch
+          else
+            echo "Repository already initialized. Fetching updates..."
+            git fetch origin
+            git checkout main
+            git pull origin main
           fi
-          git fetch origin
-          git checkout main
 
       - name: Set Git User Config
         run: |
@@ -31,13 +39,14 @@ jobs:
 
       - name: Modify Last Update
         run: |
+          # Update the LAST_UPDATED file with the current timestamp
           d=$(date '+%Y-%m-%dT%H:%M:%SZ')
           echo $d > LAST_UPDATED
           git add LAST_UPDATED
 
       - name: Commit Multiple Changes
         run: |
-          changes_made=false
+          # Array of commit messages
           arr[0]="chore(bot): 😂 auto commit"
           arr[1]="chore(bot): 😱 auto commit"
           arr[2]="chore(bot): 👿 auto commit"
@@ -48,27 +57,29 @@ jobs:
           arr[7]="chore(bot): 🤖 auto commit"
           arr[8]="chore(bot): 🟩 auto commit"
           arr[9]="chore(bot): 👻 auto commit"
-          
-          for i in {1..5}; do  # 5 commits per run
+
+          # Make multiple commits if there are changes
+          changes_made=false
+          for i in {1..5}; do  # Adjust the number of commits per run as needed
             rand=$[$RANDOM % ${#arr[@]}]
             git add -A
-            if ! git diff-index --quiet HEAD; then  # Check if there are any changes to commit
+            if ! git diff-index --quiet HEAD; then  # Check if there are changes to commit
               git commit -m "${arr[$rand]}"
               changes_made=true
             fi
           done
 
           if [ "$changes_made" = true ]; then
-            echo "Changes committed"
+            echo "Changes committed."
           else
-            echo "No changes to commit"
+            echo "No changes to commit."
           fi
 
       - name: Push Changes
         run: |
-          if git rev-parse --is-inside-work-tree; then
-            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
-            git push origin main
-          else
-            echo "Not inside a git repository. Skipping push."
-          fi
+          # Push commits to the main branch
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
+          git push origin main
+
+      - name: Complete job
+        run: echo "Auto Commit workflow completed successfully"
