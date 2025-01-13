@@ -37,30 +37,31 @@ jobs:
           git config --local user.email "omchoksi108@gmail.com"
           git config --local user.name "OMCHOKSI108"
 
-      - name: Modify Last Update
+      - name: Modify JavaScript Code
         run: |
-          # Update the LAST_UPDATED file with the current timestamp
-          d=$(date '+%Y-%m-%dT%H:%M:%SZ')
-          echo $d > LAST_UPDATED
-          git add LAST_UPDATED
+          # Simulate changes to JavaScript files
+          echo "console.log('Last updated: $(date '+%Y-%m-%d %H:%M:%S')');" >> src/last_updated.js
+          echo "function add(a, b) { return a + b; }" > src/math.js
+          echo "module.exports = { add };" >> src/math.js
+          git add src/last_updated.js src/math.js
 
-      - name: Commit Multiple Changes
+      - name: Commit JavaScript Changes
         run: |
-          # Array of commit messages
-          arr[0]="chore(bot): 😂 auto commit"
-          arr[1]="chore(bot): 😱 auto commit"
-          arr[2]="chore(bot): 👿 auto commit"
-          arr[3]="chore(bot): 💩 auto commit"
-          arr[4]="chore(bot): 🙏 auto commit"
-          arr[5]="chore(bot): 🙈 auto commit"
-          arr[6]="chore(bot): 🐐 auto commit"
-          arr[7]="chore(bot): 🤖 auto commit"
-          arr[8]="chore(bot): 🟩 auto commit"
-          arr[9]="chore(bot): 👻 auto commit"
+          # Array of realistic JavaScript-related commit messages
+          arr[0]="fix: resolve bug in async data fetching in api.js"
+          arr[1]="feat: add error handling for form validation"
+          arr[2]="docs: update README with API usage examples"
+          arr[3]="style: apply Prettier formatting to all JS files"
+          arr[4]="chore: bump package versions in package.json"
+          arr[5]="test: add unit tests for math.js utility functions"
+          arr[6]="refactor: improve performance of the render loop"
+          arr[7]="fix: correct incorrect variable scoping in app.js"
+          arr[8]="perf: optimize DOM manipulation in index.js"
+          arr[9]="feat: implement JWT-based authentication middleware"
 
           # Make multiple commits if there are changes
           changes_made=false
-          for i in {1..5}; do  # Adjust the number of commits per run as needed
+          for i in {1..3}; do  # Adjust the number of commits per run as needed
             rand=$[$RANDOM % ${#arr[@]}]
             git add -A
             if ! git diff-index --quiet HEAD; then  # Check if there are changes to commit
