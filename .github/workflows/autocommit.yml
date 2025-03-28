@@ -1,48 +1,48 @@
-# name: Auto Commit
+name: Auto Commit
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   schedule:
-#     - cron: "0 * * * *"  # Runs every hour
-#   workflow_dispatch:  # Manual trigger
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 * * * *"  # Runs every hour
+  workflow_dispatch:  # Manual trigger
 
-# jobs:
-#   auto_commit:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Set up job
-#         run: echo "Starting auto-commit workflow..."
+jobs:
+  auto_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up job
+        run: echo "Starting auto-commit workflow..."
 
-#       - name: Check if Repo is Initialized
-#         run: |
-#           if [ ! -d ".git" ]; then
-#             git init
-#             git remote add origin https://github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
-#           fi
-#           git fetch origin
-#           git checkout main || git checkout -b main
+      - name: Check if Repo is Initialized
+        run: |
+          if [ ! -d ".git" ]; then
+            git init
+            git remote add origin https://github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
+          fi
+          git fetch origin
+          git checkout main || git checkout -b main
 
-#       - name: Set Git User Config
-#         run: |
-#           git config --local user.email "omchoksi108@gmail.com"
-#           git config --local user.name "OMCHOKSI108"
+      - name: Set Git User Config
+        run: |
+          git config --local user.email "omchoksi108@gmail.com"
+          git config --local user.name "OMCHOKSI108"
 
-#       - name: Modify JavaScript Code
-#         run: |
-#           if [ ! -f "file.js" ]; then
-#             echo "console.log('Hello, World!');" > file.js
-#           fi
-#           echo "// Modified by Auto Commit" >> file.js
-#           echo "console.log('Last updated: $(date)');" >> file.js
+      - name: Modify JavaScript Code
+        run: |
+          if [ ! -f "file.js" ]; then
+            echo "console.log('Hello, World!');" > file.js
+          fi
+          echo "// Modified by Auto Commit" >> file.js
+          echo "console.log('Last updated: $(date)');" >> file.js
 
-#       - name: Commit JavaScript Changes
-#         run: |
-#           git add file.js
-#           git commit -m "chore: Auto-update JavaScript file"
+      - name: Commit JavaScript Changes
+        run: |
+          git add file.js
+          git commit -m "chore: Auto-update JavaScript file"
 
-#       - name: Push Changes
-#         run: |
-#           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
-#           git push origin main
+      - name: Push Changes
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/OMCHOKSI108/JAVA-PROGRAMMING-DSA.git
+          git push origin main
